@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
 import fileUpload from "express-fileupload";
+import ErrorHandler from "./utils/ErrorHandler.js";
 
 const app = express();
 dotenv.config();
@@ -27,6 +28,9 @@ app.use(fileUpload({
 }));
 
 app.use("/api", User)
+
+
+app.use(ErrorHandler)
 
 app.listen(5000, () => {
     console.log("APP Listening To")
